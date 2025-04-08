@@ -8,25 +8,25 @@ const DockNavigation = () => {
   const pathname = usePathname()
 
   return (
-    <div className="dock">
+    <div className="dock flex justify-around py-2 bg-base-100 shadow-md rounded-t-xl">
       <Link href="/">
-        <div className={pathname === "/" ? "dock-active" : ""}>
-          <ChefHat />
-          <span className="dock-label">Home</span>
+        <div className="flex flex-col items-center gap-1">
+          <ChefHat className={`w-6 h-6 ${pathname === "/" ? "text-primary" : "text-base-content"}`} />
+          <span className={`dock-label ${pathname === "/" ? "" : ""}`}>Home</span>
         </div>
       </Link>
 
       <Link href="/favorites">
-        <button className={pathname === "/favorites" ? "dock-active" : " dock-active"}>
-          <Heart />
-          <span className="dock-label capitalize">Favorites</span>
-        </button>
+        <div className="flex flex-col items-center gap-1">
+          <Heart className={`w-6 h-6 ${pathname === "/favorites" ? "text-secondary" : "text-base-content"}`} />
+          <span className={`dock-label capitalize ${pathname === "/favorites" ? "" : ""}`}>Favorites</span>
+        </div>
       </Link>
 
       <Link href="/search">
-        <div className={pathname === "/search" ? "dock-active" : ""}>
-          <Search />
-          <span className="dock-label">Search</span>
+        <div className="flex flex-col items-center gap-1">
+          <Search className={`w-6 h-6 ${pathname === "/search" ? "text-accent" : "text-base-content"}`} />
+          <span className={`dock-label ${pathname === "/search" ? "" : ""}`}>Search</span>
         </div>
       </Link>
     </div>
