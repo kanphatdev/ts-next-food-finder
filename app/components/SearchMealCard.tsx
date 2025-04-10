@@ -1,16 +1,14 @@
-"use client";
-import Image from "next/image";
+import { Heart } from "lucide-react";
 import { Meal } from "../util/Type";
-import { Heart, Utensils } from "lucide-react";
-import Link from "next/link";
-import { addToFavorites, removeFromFavorites } from "../util/Function"; // Import remove function
 import { useState, useEffect } from "react";
+import { removeFromFavorites, addToFavorites } from "../util/Function"; // Import remove function
+import Image from "next/image"; // Import Image from Next.js
 
-type MealCardProps = {
+type Props = {
   meal: Meal;
 };
 
-export default function MealCard({ meal }: MealCardProps) {
+export default function SearchMealCard({ meal }: Props) {
   const [isActive, setIsActive] = useState(false);
 
   // Check if the meal is in the favorites list on component mount
@@ -37,7 +35,6 @@ export default function MealCard({ meal }: MealCardProps) {
           alt={meal.strMeal}
           layout="fill" // This makes the image fill the parent container
           className="object-cover rounded-t-box"
-          sizes="(max-width: 768px) 100vw, 33vw" // Make image responsive
           priority // Prioritize loading the image
         />
       </figure>
@@ -50,12 +47,9 @@ export default function MealCard({ meal }: MealCardProps) {
           >
             <Heart />
           </button>
-          <Link
-            href={`/recipe/${meal.idMeal}`}
-            className="btn btn-soft btn-accent capitalize"
-          >
-            view recipe <Utensils />
-          </Link>
+          <a href={`/recipe/${meal.idMeal}`} className="btn btn-soft btn-success capitalize">
+            view recipe
+          </a>
         </div>
       </div>
     </div>
