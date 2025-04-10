@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
 import { Meal } from "../util/Type";
-import { Utensils } from "lucide-react";
+import { Heart, Utensils } from "lucide-react";
+import Link from "next/link";
 
 type MealCardProps = {
   meal: Meal;
@@ -22,8 +23,17 @@ export default function MealCard({ meal }: MealCardProps) {
       </figure>
       <div className="card-body">
         <h2 className="card-title text-base">{meal.strMeal}</h2>
-        <div className="card-actions">
-        <button className="btn btn-soft btn-accent capitalize">view recipe<Utensils /> </button>
+
+        <div className="card-actions justify-between items-center">
+          <button className="btn btn-primary btn-dash">
+            <Heart />
+          </button>
+          <Link
+            href={`/recipe/${meal.idMeal}`}
+            className="btn btn-soft btn-accent capitalize"
+          >
+            view recipe <Utensils />
+          </Link>
         </div>
       </div>
     </div>
